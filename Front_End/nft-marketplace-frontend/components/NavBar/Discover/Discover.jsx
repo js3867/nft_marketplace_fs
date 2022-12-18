@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 
 // INTERNAL IMPORT
-import Style from './Discover.module.css'
+import Style from "./Discover.module.css"
 
 const Discover = () => {
-    return <div></div>
+  return <div>Discover</div>
 }
 
 export default Discover

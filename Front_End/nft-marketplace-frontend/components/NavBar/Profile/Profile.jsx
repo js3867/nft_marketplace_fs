@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 
 // INTERNAL IMPORT
-import Style from './Profile.module.css'
+import Style from "./Profile.module.css"
 
 const Profile = () => {
-    return <div></div>
+  return <div>Profile</div>
 }
 
 export default Profile

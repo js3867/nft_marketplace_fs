@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 
 // INTERNAL IMPORT
-import Style from './Notification.module.css'
+import Style from "./Notification.module.css"
 
 const Notification = () => {
-    return <div></div>
+  return <div>Notification</div>
 }
 
 export default Notification

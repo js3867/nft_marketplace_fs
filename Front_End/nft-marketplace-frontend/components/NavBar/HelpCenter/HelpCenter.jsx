@@ -1,13 +1,10 @@
-import React from 'react'
+import React from "react"
 
 // INTERNAL IMPORT
-import Style from './HelpCenter.module.css'
+import Style from "./HelpCenter.module.css"
 
 const HelpCenter = () => {
-    return <div></div>
+  return <div>Help Center</div>
 }
-
-// INTERNAL IMPORT
-import Style from './HelpCenter.module.css'
 
 export default HelpCenter

@@ -1,13 +1,10 @@
-import React from 'react'
+import React from "react"
 
 // INTERNAL IMPORT
-import Style from './SideBar.module.css'
+import Style from "./SideBar.module.css"
 
 const SideBar = () => {
-    return <div></div>
+  return <div>SideBar</div>
 }
-
-// INTERNAL IMPORT
-import Style from './SideBar.module.css'
 
 export default SideBar
