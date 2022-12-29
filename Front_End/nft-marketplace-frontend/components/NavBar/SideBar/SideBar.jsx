@@ -166,8 +166,9 @@ const SideBar = ({ setOpenSideMenu, currentAccount, connectWallet }) => {
       </div>
 
       <div className={Style.sideBar_button}>
-        <Button btnName="Create" />
-        <Button btnName="Connect Wallet" />
+        {/* handleClick will connect with blockchain/smart contracts later */}
+        <Button btnName="Create" handleClick={() => {}} />
+        <Button btnName="Connect Wallet" handleClick={() => {}} />
       </div>
     </div>
   )
