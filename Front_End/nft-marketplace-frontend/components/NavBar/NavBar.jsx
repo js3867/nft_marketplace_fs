@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
+import { DiJqueryLogo } from "react-icons/di"
 import Link from "next/link"
 
 // React-icons https://react-icons.github.io/react-icons/
@@ -131,7 +132,7 @@ const NavBar = () => {
           {/* CREATE BUTTON SECTION */}
           <div className={Style.navbar_container_right_button}>
             {/* because every button will be different, we need to add unqiue props for each blueprint component*/}
-            <Button btnText="Create" />
+            <Button btnName="Create" handleClick={() => {}} />
           </div>
 
           {/* USER PROFILE */}
@@ -139,7 +140,7 @@ const NavBar = () => {
           <div className={Style.navbar_container_right_profile_box}>
             <div className={Style.navbar_container_right_profile}>
               <Image
-                scr={images.user1}
+                src={images.user1}
                 alt="Profile"
                 width={40}
                 height={40}
@@ -165,7 +166,7 @@ const NavBar = () => {
       {/* SIDEBAR COMPONENT -- only mobile (hence "out of inner-component") */}
       {openSideMenu && (
         <div className={Style.sideBar}>
-          <SideBar serOpenSideMenu={setOpenSideMenu} />
+          <SideBar setOpenSideMenu={setOpenSideMenu} />
         </div>
       )}
     </div>
