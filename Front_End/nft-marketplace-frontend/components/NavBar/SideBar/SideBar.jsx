@@ -14,6 +14,7 @@ import {
 
 // INTERNAL IMPORT
 import Style from "./SideBar.module.css"
+// import images from "../../../img/index"
 import images from "../../../img"
 import Button from "../../Button/Button"
 
@@ -104,7 +105,8 @@ const SideBar = ({ setOpenSideMenu, currentAccount, connectWallet }) => {
         onClick={() => closeSideBar()}
       />
       <div className={Style.sideBar_box}>
-        <Image src={images.logo} alt="logo" width={50} height={150} />
+        <Image src={images.logo} alt="logo" width={150} height={150} />
+
         <p>Discover the Most Outstanding Articles on the topic of NFTs</p>
         <div className={Style.sideBar_social}>
           <a href="#">

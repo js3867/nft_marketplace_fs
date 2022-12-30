@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
-import { DiJqueryLogo } from "react-icons/di"
-import Link from "next/link"
 
 // React-icons https://react-icons.github.io/react-icons/
 import { MdNotifications } from "react-icons/md"
