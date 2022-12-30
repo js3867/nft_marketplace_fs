@@ -1,13 +1,15 @@
 import "../styles/globals.css"
 
 // INTERNAL IMPORT
-import { NavBar } from "../components/componentsindex"
+import { NavBar, Footer } from "../components/componentsindex"
+// can import both from same index (which locates the file for us)
 
-const App = ({ Component, pageProps }) => (
+const MyApp = ({ Component, pageProps }) => (
   <div>
     <NavBar />
     <Component {...pageProps} />
+    <Footer />
   </div>
 )
 
-export default App
+export default MyApp

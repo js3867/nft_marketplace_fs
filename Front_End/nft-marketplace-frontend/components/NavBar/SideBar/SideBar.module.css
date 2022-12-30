@@ -42,7 +42,7 @@
 }
 
 .sideBar_social a:hover{
-    background-color: var(--icons-color);
+    background-color: var(--icons-light-color);
     color: var(--shadow-dark-color);
     box-shadow: 1px solid var(--icons-color);
 }
