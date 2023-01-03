@@ -1,7 +1,7 @@
 
 .heroSection{
     width: 80%;
-    margin: 0rem auto;
+    margin: 3rem auto;
 }
 
 .heroSection_box{
@@ -24,15 +24,16 @@
 }
 
 /* recommended but not necessary */
-/* .heroSection_box_right {
+.heroSection_box_right {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
-} */
+}
 
 .img {
     max-width: 100%;
     object-fit: cover;
+    
 }
 
 /* sets whole heroSection to 90 for screens smaller than 35em */

@@ -82,7 +82,8 @@
 @media screen and (max-width: 45em) {
     .footer_box{
         width: 90%;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 1fr;
+        /* TO DO -- switch grid areas 1 and 3 at this media size */
     }
 }
 
