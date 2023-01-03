@@ -12,7 +12,7 @@ const Service = () => {
         <div className={Style.service_box_item}>
           <Image
             src={images.service1}
-            alt="fiter and discover"
+            alt="filter and discover"
             width={100}
             height={100}
           />
@@ -28,14 +28,14 @@ const Service = () => {
         <div className={Style.service_box_item}>
           <Image
             src={images.service2}
-            alt="Log in securely"
+            alt="Login securely"
             width={100}
             height={100}
           />
           <p className={Style.service_box_item_step}>
             <span>Step 2</span>
           </p>
-          <h3>Filter & Discover</h3>
+          <h3>Login securely</h3>
           <p>
             Connect with wallet, discover, buy & sell your favorite digital
             assets!
@@ -51,14 +51,19 @@ const Service = () => {
           <p className={Style.service_box_item_step}>
             <span>Step 3</span>
           </p>
-          <h3>Buy and Sell</h3>
+          <h3>Meet buyers and sellers</h3>
           <p>
             Connect with wallet, discover, buy & sell your favorite digital
             assets!
           </p>
         </div>
         <div className={Style.service_box_item}>
-          <Image src={images.service4} alt="" width={100} height={100} />
+          <Image
+            src={images.service4}
+            alt="start trading"
+            width={100}
+            height={100}
+          />
           <p className={Style.service_box_item_step}>
             <span>Step 4</span>
           </p>
