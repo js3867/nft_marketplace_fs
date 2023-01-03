@@ -1,7 +1,12 @@
 
+
+.footer_box_social_logo{
+    font-size: 5rem;
+}
+
 .footer {
     width: 100%;
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     position: relative;
 }
 
@@ -14,50 +19,48 @@
     /* this works bc we know footer_box has 4 <divs> */
     align-items: flex-start;
     justify-content: space-between;
-    gap: 3rem;
+    gap: .3rem;
 }
 
 /* //SOCIAL */
 .footer_social{
     display: flex;
-    gap: 1.3rem;
+    gap: .3rem;
     font-size: 1.5rem;
     align-items: center;
 }
 
 .footer_social a{
-    padding: .4rem;
+    padding: .5rem;
     border-radius: 50%;
     transition: all .3s ease-in;
     display: grid;
 }
 
 .footer_social a:hover{
-    background-color: var(--icons-light-color);
-    color: var(--shadow-dark-color);
+    background-color:  var(--icons-color);
+    color:  var(--shadow-dark-color);
     box-shadow: var(--box-shadow);
 }
-
-/* // MEDIA QUERY */
 
 .subscribe_box{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--icons-color);
+    padding: 1.5rem 2rem;
+    background-color:  var(--icons-color);
     color: var(--shadow-dark-color);
     border-radius: 5rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .subscribe_box input{
-    background-color: transparent;
-    color: var(--shadow-dark-color);
-    width: 90%;
+    background: transparent;
     border: none;
     outline: none;
+    width: 90%;
+    color: var(--shadow-dark-color);
 }
 
 .subscribe_box input::placeholder{
@@ -73,11 +76,13 @@
     padding: 1rem 2rem;
 }
 
-/* using 1 col for tablet */
+/* // MEDIA QUERY */
+
+/* using 1:2 col for tablet */
 @media screen and (max-width: 45em) {
     .footer_box{
         width: 90%;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
     }
 }
 
