@@ -7,6 +7,7 @@ import {
   Service,
   BigNFTSlider,
   Subscribe,
+  Title,
 } from "../components/componentsindex"
 
 const Home = () => {
@@ -16,6 +17,10 @@ const Home = () => {
       <Service />
       <BigNFTSlider />
       <Subscribe />
+      <Title
+        heading="Browse by Category"
+        paragraph="Explore the NFTs by category"
+      />
     </div>
   )
 }
