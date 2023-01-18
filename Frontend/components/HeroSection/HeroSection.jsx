@@ -25,7 +25,7 @@ const HeroSection = () => {
             alt="Hero section"
             width={600}
             height={600}
-            className={Style.img} // << my effort to contain the image, then found the below in the sourcecode (not in video!)
+            className={Style.heroSection_box_right_img} // << my effort to contain the image, then found the below in the sourcecode (not in video!)
             // className={Style.navbar_container_right_profile}
           />
         </div>
