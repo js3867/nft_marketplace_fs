@@ -2,14 +2,15 @@
 
 .subscribe{
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .subscribe_box{
     width: 80%;
     margin: 0 auto;
-    /* padding:  4rem 0; */
     padding-bottom: 4rem;
-
+    
     display: grid;
     grid-template-columns: 1.5fr 2fr;
     align-items: center;
