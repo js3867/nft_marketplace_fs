@@ -9,6 +9,7 @@ import {
   Subscribe,
   Title,
   Category,
+  Filter,
 } from "../components/componentsindex"
 
 const Home = () => {
@@ -17,6 +18,11 @@ const Home = () => {
       <HeroSection />
       <Service />
       <BigNFTSlider />
+      <Title
+        heading="Filter NFTs"
+        paragraph="Search for NFTs by name, category, price, and more"
+      />
+      <Filter />
       <Title
         heading="Browse by Category"
         paragraph="Explore the NFTs by category"
