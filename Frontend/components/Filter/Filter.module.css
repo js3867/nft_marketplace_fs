@@ -167,22 +167,27 @@
 @media screen and (min-device-width: 427px) and (max-device-width: 786px) {
     .filter_box{
         display: grid;
-        gap: 4rem;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
         width: 90%;
     }
     .filter_box_left{
-        display: grid;
+        display: flex;
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .filter_box_left button{
-        padding: 1rem;
-    }
+    /* .filter_box_left button{
+        padding: 0rem;
+    } */
 
     .filter_box_items{
         display: grid;
         width: 90%;
         grid-template-columns: repeat(2, 1fr);
+    }
+    .filter_box_items_box{
+        padding: 1rem 3rem;
     }
 
     .filter_box_right_box{

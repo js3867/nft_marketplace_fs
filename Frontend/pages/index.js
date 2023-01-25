@@ -10,6 +10,7 @@ import {
   Title,
   Category,
   Filter,
+  NFTCard,
 } from "../components/componentsindex"
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
         paragraph="Search for NFTs by name, category, price, and more"
       />
       <Filter />
+      <NFTCard />
       <Title
         heading="Browse by Category"
         paragraph="Explore the NFTs by category"
