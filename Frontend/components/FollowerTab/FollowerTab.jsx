@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react"
 import {
-  BsFillAlarmFill,
-  BsCalendar3,
-  BsCalendarDateFill,
-} from "react-icons/bs"
+  RiUserFollowFill,
+  RiUserUnfollowFill,
+  RiAwardLine,
+} from "react-icons/ri"
 
 // --INTERNAL IMPORTS
-import Style from "./Collection.module.css"
-import DaysComponents from "./DaysComponents/DaysComponents"
+import Style from "./FollowerTab.module.css"
+import FollowerTabCard from "./FollowerTabCard/FollowerTabCard"
 
-const Collection = () => {
+const FollowerTab = () => {
   const [popular, setPopular] = useState(true)
   const [following, setFollowing] = useState(false)
   const [news, setNews] = useState(false)
 
   const cardArray = [1, 2, 3, 4, 5, 6, 7, 8]
-  const followingArray = [1, 2, 3, 4]
-  const newsArray = [1, 2, 3, 4, 5, 6]
+  const followingArray = [1, 2, 3, 4, 5, 6]
+  const newsArray = [1, 2, 3, 4, 5]
 
   const openPopular = () => {
     if (!popular) {
@@ -39,54 +39,60 @@ const Collection = () => {
       setNews(true)
     }
   }
-
   return (
-    <div className={Style.collection}>
-      <div className={Style.collection_title}>
-        <h2>Top Collections</h2>
-        <div className={Style.collection_collections}>
-          <div className={Style.collection_collections_btn}>
+    <div className={Style.followerTab}>
+      <div className={Style.followerTab_title}>
+        <h2>Top Creators</h2>
+        <div className={Style.followerTab_tabs}>
+          <div className={Style.followerTab_tabs_btn}>
             <button onClick={() => openPopular()}>
-              <BsFillAlarmFill />
-              24 Hours
+              <RiUserFollowFill />
+              Popular
             </button>
             <button onClick={() => openFollowing()}>
-              <BsCalendar3 />7 Days
+              <RiUserFollowFill />
+              Following
             </button>
             <button onClick={() => openNews()}>
-              <BsCalendarDateFill />
-              30 Days
+              <RiAwardLine />
+              News
             </button>
           </div>
         </div>
       </div>
 
-      {/* if popular && ...and what?? */}
       {popular && (
-        <div className={Style.collection_box}>
+        <div className={Style.followerTab_box}>
           {cardArray.map((el, i) => (
-            <DaysComponents key={i + 1} />
+            <FollowerTabCard key={i + 1} i={i} el={el} />
           ))}
         </div>
       )}
 
       {following && (
-        <div className={Style.collection_box}>
+        <div className={Style.followerTab_box}>
           {followingArray.map((el, i) => (
-            <DaysComponents key={i + 1} />
+            <FollowerTabCard key={i + 1} i={i} el={el} />
           ))}
         </div>
       )}
 
       {news && (
-        <div className={Style.collection_box}>
+        <div className={Style.followerTab_box}>
           {newsArray.map((el, i) => (
-            <DaysComponents key={i + 1} />
+            <FollowerTabCard key={i + 1} i={i} el={el} />
           ))}
         </div>
       )}
+
+      <div className={Style.followerTab_member}>
+        <div className={Style.followerTab_member_box}>
+          <a href="#">Show me more</a>
+          <a href="#">Become a creator</a>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default Collection
+export default FollowerTab
