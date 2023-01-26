@@ -282,6 +282,15 @@ a {
   color: black;
 }
 
+img {
+  height:auto;
+  max-width:100%;
+}
+/* // use the !important property to override on new image class. */
+/* .auto-width {
+  max-width: none !important;
+} */
+
 ::selection{
   color: var(--shadow-dark-color);
   background: var(--icons-color);
@@ -302,6 +311,7 @@ a {
   background:  var(--icons-color);
   width: .5rem;
 }
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

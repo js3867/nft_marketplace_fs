@@ -1,5 +1,5 @@
 import React from "react"
-import { RiSendPlaneFill } from "react-icons/ri"
+import { RiSendPlaneFill, RiSendPlaneLine } from "react-icons/ri"
 import Image from "next/image"
 
 //INTERNAL IMPORT
@@ -36,9 +36,8 @@ const Subscribe = () => {
           <Image
             src={images.update}
             alt="get update"
-            height={300}
-            width={400}
-            className={Style.subscribe_box_right_img}
+            height={500}
+            width={600}
           />
         </div>
       </div>
