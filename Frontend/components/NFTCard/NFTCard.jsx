@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai"
-import { BsImage, BsImages } from "react-icons/bs"
+import { BsImages } from "react-icons/bs"
 import Image from "next/image"
 
 // --INTERNAL IMPORTS
@@ -10,7 +10,7 @@ import images from "../../img"
 const NFTCard = () => {
   const featureArray = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-  const [isLiked, setLike] = useState(false)
+  const [isLiked, setLike] = useState(true)
 
   const likeNft = () => {
     isLiked ? setLike(false) : setLike(true)
@@ -27,23 +27,24 @@ const NFTCard = () => {
               height={600}
               className={Style.NFTCard_box_img_img}
             />
-            <div className={Style.NFTCard_box_update}>
-              <div className={Style.NFTCard_box_update_left}>
-                <div
-                  className={Style.NFTCard_box_update_left_like}
-                  onClick={() => likeNft()}
-                >
-                  {isLiked ? (
-                    <AiOutlineHeart />
-                  ) : (
-                    <AiFillHeart
-                      className={Style.NFTCard_box_update_left_like_icon}
-                    />
-                  )}
-                  {""} 22
-                </div>
+          </div>
+          <div className={Style.NFTCard_box_update}>
+            <div className={Style.NFTCard_box_update_left}>
+              <div
+                className={Style.NFTCard_box_update_left_like}
+                onClick={() => likeNft()}
+              >
+                {isLiked ? (
+                  <AiOutlineHeart />
+                ) : (
+                  <AiFillHeart
+                    className={Style.NFTCard_box_update_left_like_icon}
+                  />
+                )}
+                {""} 22
               </div>
             </div>
+
             <div className={Style.NFTCard_box_update_right}>
               <div className={Style.NFTCard_box_update_right_info}>
                 <small>Remaining time</small>
@@ -51,6 +52,7 @@ const NFTCard = () => {
               </div>
             </div>
           </div>
+
           <div className={Style.NFTCard_box_update_details}>
             <div className={Style.NFTCard_box_update_details_price}>
               <div className={Style.NFTCard_box_update_details_price_box}>
@@ -61,7 +63,7 @@ const NFTCard = () => {
                     className={Style.NFTCard_box_update_details_price_box_bid}
                   >
                     <small>Current Bid</small>
-                    <p>1 ETH</p>
+                    <p>1.00 ETH</p>
                   </div>
                   <div
                     className={Style.NFTCard_box_update_details_price_box_stock}
