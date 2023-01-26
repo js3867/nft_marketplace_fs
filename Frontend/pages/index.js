@@ -13,6 +13,9 @@ import {
   NFTCard,
   Collection,
   FollowerTab,
+  //
+  //
+  Brand,
 } from "../components/componentsindex"
 
 const Home = () => {
@@ -39,6 +42,7 @@ const Home = () => {
       />
       <Category />
       <Subscribe />
+      <Brand />
     </div>
   )
 }

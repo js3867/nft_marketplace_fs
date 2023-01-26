@@ -11,6 +11,9 @@ import Filter from "./Filter/Filter"
 import NFTCard from "./NFTCard/NFTCard"
 import Collection from "./Collection/Collection"
 import FollowerTab from "./FollowerTab/FollowerTab"
+//
+//
+import Brand from "./Brand/Brand"
 
 export {
   Button,
@@ -26,4 +29,7 @@ export {
   NFTCard,
   Collection,
   FollowerTab,
+  //
+  //
+  Brand,
 }

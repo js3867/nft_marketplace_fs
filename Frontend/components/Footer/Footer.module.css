@@ -52,7 +52,7 @@
     border-radius: 5rem;
     margin-top: 3rem;
 
-    outline-style: auto;
+    border: solid 1px var(--icons-color);
     color: var(--icons-color);
     box-shadow: var(--box-shadow);
 }
