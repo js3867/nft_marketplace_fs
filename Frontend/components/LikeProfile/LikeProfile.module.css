@@ -1,0 +1,15 @@
+
+.like{
+    display: flex;
+    align-items: flex-start;
+}
+
+.like_box{
+    border-radius: 50%;
+    border: 2px solid var(--icons-color);
+}
+
+.like_img{
+    border-radius: 50%;
+    
+}

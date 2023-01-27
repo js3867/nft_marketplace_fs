@@ -1,0 +1,61 @@
+
+.audioPlayer_box{
+    display: grid;
+    grid-template-columns: 2fr 5fr 1fr;
+    align-items: center;
+    gap: 1.3rem;
+    line-height: 0;
+    background-color: var(--bg-shadow-dark-color);
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    height: 8rem;
+    transition: all .3s ease-in;
+    cursor: pointer;
+}
+
+.audioPlayer_box:hover{
+    box-shadow: var(--box-shadow);
+}
+
+.audioPlayer_box_info_box{
+    display: flex;
+    gap: 1rem;
+}
+
+.audioPlayer_box_img{
+    border-radius: .5rem;
+    max-width: none !important;
+}
+
+.audioPlayer_box_info_box_price{
+    border: 1px solid var(--icons-color);
+    font-size: .8rem;
+    /* width: 80%; */
+    font-weight: 600;
+    border-radius: .2rem;
+    padding: 0 0.5rem;
+}
+
+.audioPlayer_box_info_box_price small{
+    /* color: var(--icons-color); */
+    background-color: var(--bg-shadow-dark-color);
+    padding: .1rem .3rem;
+    border-radius: .2rem;
+}
+
+.audioPlayer_box_info_box_price p{
+    margin-top: 1rem;
+}
+
+.audioPlayer_box_playBtn{
+    font-size: 1.5rem;
+    /* background-color: var(--main-bg-color); */
+    /* border-radius: 50%; */
+    /* padding: 0.5rem */
+}
+
+@media screen and (min-width: 320px) and (max-width: 373px){
+    .audioPlayer_box_info h4{
+        font-size: 0.8rem;
+    }
+}
