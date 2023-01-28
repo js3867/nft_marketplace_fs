@@ -26,6 +26,10 @@
 
 .category_box_img{
     border-radius: 1rem;
+    max-width: 100% !important;
+    height: 7rem;
+    object-fit: cover;
+
 }
 
 .category_box_title{

@@ -8,15 +8,103 @@ import {
 // --INTERNAL IMPORTS
 import Style from "./Collection.module.css"
 import DaysComponents from "./DaysComponents/DaysComponents"
+import image from "../../img"
 
 const Collection = () => {
   const [popular, setPopular] = useState(true)
   const [following, setFollowing] = useState(false)
   const [news, setNews] = useState(false)
 
-  const cardArray = [1, 2, 3, 4, 5, 6, 7, 8]
-  const followingArray = [1, 2, 3, 4]
-  const newsArray = [1, 2, 3, 4, 5, 6]
+  const cardArray = [
+    {
+      background: image.creatorbackground1,
+      user: image.user1,
+    },
+    {
+      background: image.creatorbackground2,
+      user: image.user2,
+    },
+    {
+      background: image.creatorbackground3,
+      user: image.user3,
+    },
+    {
+      background: image.creatorbackground4,
+      user: image.user4,
+    },
+    {
+      background: image.creatorbackground5,
+      user: image.user5,
+    },
+    {
+      background: image.creatorbackground6,
+      user: image.user6,
+    },
+    {
+      background: image.creatorbackground7,
+      user: image.user7,
+    },
+    {
+      background: image.creatorbackground8,
+      user: image.user8,
+    },
+  ]
+  const followingArray = [
+    {
+      background: image.creatorbackground4,
+      user: image.user4,
+    },
+    {
+      background: image.creatorbackground5,
+      user: image.user5,
+    },
+    {
+      background: image.creatorbackground6,
+      user: image.user6,
+    },
+    {
+      background: image.creatorbackground7,
+      user: image.user7,
+    },
+    {
+      background: image.creatorbackground2,
+      user: image.user2,
+    },
+    {
+      background: image.creatorbackground3,
+      user: image.user3,
+    },
+  ]
+  const newsArray = [
+    {
+      background: image.creatorbackground1,
+      user: image.user10,
+    },
+    {
+      background: image.creatorbackground2,
+      user: image.user9,
+    },
+    {
+      background: image.creatorbackground4,
+      user: image.user4,
+    },
+    {
+      background: image.creatorbackground5,
+      user: image.user5,
+    },
+    {
+      background: image.creatorbackground3,
+      user: image.user3,
+    },
+    {
+      background: image.creatorbackground6,
+      user: image.user6,
+    },
+    {
+      background: image.creatorbackground7,
+      user: image.user7,
+    },
+  ]
 
   const openPopular = () => {
     if (!popular) {
@@ -65,7 +153,7 @@ const Collection = () => {
       {popular && (
         <div className={Style.collection_box}>
           {cardArray.map((el, i) => (
-            <DaysComponents key={i + 1} />
+            <DaysComponents key={i + 1} el={el} i={i} />
           ))}
         </div>
       )}
@@ -73,7 +161,7 @@ const Collection = () => {
       {following && (
         <div className={Style.collection_box}>
           {followingArray.map((el, i) => (
-            <DaysComponents key={i + 1} />
+            <DaysComponents key={i + 1} el={el} i={i} />
           ))}
         </div>
       )}
@@ -81,7 +169,7 @@ const Collection = () => {
       {news && (
         <div className={Style.collection_box}>
           {newsArray.map((el, i) => (
-            <DaysComponents key={i + 1} />
+            <DaysComponents key={i + 1} el={el} i={i} />
           ))}
         </div>
       )}

@@ -1,15 +1,39 @@
 import React, { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion" // npm i framer-motion https://www.framer.com/motion/
 import { TiArrowLeftThick, TiArrowRightThick } from "react-icons/ti"
-import Image from "next/image"
 
 // --INTERNAL IMPORT
 import Style from "./Slider.module.css"
 import SliderCard from "./SliderCard/SliderCard"
-import images from "../../img"
+import image from "../../img"
 
 const Slider = () => {
-  const sliderArray = [1, 2, 3, 4, 5, 6]
+  const sliderArray = [
+    {
+      background: image.creatorbackground3,
+      user: image.user3,
+    },
+    {
+      background: image.creatorbackground4,
+      user: image.user4,
+    },
+    {
+      background: image.creatorbackground5,
+      user: image.user5,
+    },
+    {
+      background: image.creatorbackground6,
+      user: image.user6,
+    },
+    {
+      background: image.creatorbackground7,
+      user: image.user7,
+    },
+    {
+      background: image.creatorbackground8,
+      user: image.user8,
+    },
+  ]
   const [width, setWidth] = useState(0)
   const dragSlider = useRef()
 

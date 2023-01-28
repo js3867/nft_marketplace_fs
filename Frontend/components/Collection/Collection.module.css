@@ -12,9 +12,20 @@
     text-align: center;
 }
 
+.collection_box{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
 .collection_title h2{
     font-size: 3rem;
     margin-bottom: 4rem;
+}
+.collection_collections{
+    width: 90%;
 }
 
 .collection_collections_btn{
@@ -48,15 +59,6 @@
     color: var(--icons-color);
 }
 
-.collection_box{
-    width: 80%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-
 @media screen and (min-device-width: 320px) and (max-device-width: 425px) {
     .collection_title{
         width: 90%;
@@ -77,10 +79,14 @@
     }
 }
 
+@media screen and (min-device-width: 428px) and (max-device-width: 769px) {
+}
+
+
 @media screen and (min-device-width: 427px) and (max-device-width: 1024px) {
-    /* .collection_title{
+    .collection_title{
         width: 90%;
-    } */
+    }
 
     .collection_box{
         width: 90%;

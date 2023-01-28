@@ -8,15 +8,112 @@ import {
 // --INTERNAL IMPORTS
 import Style from "./FollowerTab.module.css"
 import FollowerTabCard from "./FollowerTabCard/FollowerTabCard"
+import image from "../../img"
 
 const FollowerTab = () => {
+  // these arrays can be stored in sep file/int server/etc
+  const cardArray = [
+    {
+      background: image.creatorbackground1,
+      user: image.user1,
+    },
+    {
+      background: image.creatorbackground2,
+      user: image.user2,
+    },
+    {
+      background: image.creatorbackground3,
+      user: image.user3,
+    },
+    {
+      background: image.creatorbackground4,
+      user: image.user4,
+    },
+    {
+      background: image.creatorbackground5,
+      user: image.user5,
+    },
+    {
+      background: image.creatorbackground6,
+      user: image.user6,
+    },
+    {
+      background: image.creatorbackground7,
+      user: image.user7,
+    },
+    {
+      background: image.creatorbackground8,
+      user: image.user8,
+    },
+    // image.user1,
+    // image.user2,
+    // image.user3,
+    // image.user4,
+    // image.user5,
+    // image.user6,
+    // image.user7,
+    // image.user8,
+  ]
+  const followingArray = [
+    {
+      background: image.creatorbackground4,
+      user: image.user4,
+    },
+    {
+      background: image.creatorbackground5,
+      user: image.user5,
+    },
+    {
+      background: image.creatorbackground6,
+      user: image.user6,
+    },
+    {
+      background: image.creatorbackground7,
+      user: image.user7,
+    },
+    {
+      background: image.creatorbackground2,
+      user: image.user2,
+    },
+    {
+      background: image.creatorbackground3,
+      user: image.user3,
+    },
+  ]
+  const newsArray = [
+    {
+      background: image.creatorbackground1,
+      user: image.user10,
+    },
+    {
+      background: image.creatorbackground2,
+      user: image.user9,
+    },
+    {
+      background: image.creatorbackground4,
+      user: image.user4,
+    },
+    {
+      background: image.creatorbackground5,
+      user: image.user5,
+    },
+    {
+      background: image.creatorbackground3,
+      user: image.user3,
+    },
+    {
+      background: image.creatorbackground6,
+      user: image.user6,
+    },
+    {
+      background: image.creatorbackground7,
+      user: image.user7,
+    },
+  ]
+
   const [popular, setPopular] = useState(true)
   const [following, setFollowing] = useState(false)
   const [news, setNews] = useState(false)
-
-  const cardArray = [1, 2, 3, 4, 5, 6, 7, 8]
-  const followingArray = [1, 2, 3, 4, 5, 6]
-  const newsArray = [1, 2, 3, 4, 5]
 
   const openPopular = () => {
     if (!popular) {

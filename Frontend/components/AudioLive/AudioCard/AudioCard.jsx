@@ -12,6 +12,12 @@ const AudioCard = () => {
   const [like, setLike] = useState(false)
   const [play, setPlay] = useState(false)
 
+  const musiceArray = [
+    images.creatorbackground10,
+    images.creatorbackground9,
+    images.creatorbackground8,
+  ]
+
   const likeNft = () => {
     like ? setLike(false) : setLike(true)
   }

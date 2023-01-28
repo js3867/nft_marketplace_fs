@@ -284,7 +284,7 @@ a {
 
 img {
   height:auto;
-  max-width:100%;
+  max-width:100%;;
 }
 /* // use the !important property to override on new image class. */
 /* .auto-width {

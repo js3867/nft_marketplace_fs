@@ -13,6 +13,8 @@
 .daysComponent_box_img_img{
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
+    object-fit: cover;
+    height: 12rem;
 }
 
 .daysComponent_box_profile{

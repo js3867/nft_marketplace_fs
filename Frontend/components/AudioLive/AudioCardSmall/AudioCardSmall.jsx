@@ -7,7 +7,7 @@ import Style from "./AudioCardSmall.module.css"
 import images from "../../../img"
 import LikeProfile from "../../LikeProfile/LikeProfile"
 
-const AudioCardSmall = () => {
+const AudioCardSmall = ({ el, i }) => {
   const [play, setPlay] = useState(false)
 
   const playMusic = () => {
@@ -18,6 +18,7 @@ const AudioCardSmall = () => {
     <div className={Style.audioPlayer}>
       <div className={Style.audioPlayer_box}>
         <Image
+          // src={el}
           src={images.creatorbackground1}
           alt="music"
           width={100}

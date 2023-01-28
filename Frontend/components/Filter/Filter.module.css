@@ -90,15 +90,18 @@
         width: 90%;
         display: grid;
         gap: 4rem;
+        justify-content: center;
     }
     .filter_box_left{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        gap: 1rem;
+        justify-items: center;
+        /* grid-template-columns: repeat(3, 1fr); */
     }
 
     .filter_box_left button{
-        padding: .2rem;
+        width: 60%;
+        padding: .6rem;
     }
 
     .filter_box_items{
