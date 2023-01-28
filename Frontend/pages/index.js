@@ -16,6 +16,7 @@ import {
   AudioLive,
   Slider,
   Brand,
+  Video,
 } from "../components/componentsindex"
 
 const Home = () => {
@@ -49,6 +50,7 @@ const Home = () => {
       <Category />
       <Subscribe />
       <Brand />
+      <Video />
     </div>
   )
 }
