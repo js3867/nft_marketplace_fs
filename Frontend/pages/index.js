@@ -14,7 +14,7 @@ import {
   Collection,
   FollowerTab,
   AudioLive,
-  //
+  Slider,
   Brand,
 } from "../components/componentsindex"
 
@@ -25,16 +25,17 @@ const Home = () => {
       <Service />
       <BigNFTSlider />
       <Title
-        heading="New Sounds"
+        heading="Find the new sound, man"
         paragraph="Search for NFTs by name, category, price, and more"
       />
       <AudioLive />
       <Title
-        heading="New NFT Collections"
+        heading="Explore NFT Collections"
         paragraph="Search for NFTs by name, category, price, and more"
       />
       <Collection />
       <FollowerTab />
+      <Slider />
       <Title
         heading="Featured NFTs"
         paragraph="Search for NFTs by name, category, price, and more"
