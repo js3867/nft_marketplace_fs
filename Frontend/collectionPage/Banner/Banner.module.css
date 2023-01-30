@@ -1,0 +1,21 @@
+
+.banner_img_img{
+    width: 1600px;
+    height: 300px;
+    object-fit:cover;
+}
+
+.banner_img_mobile{
+    display: none;
+}
+
+@media screen and (max-width: 35em) {
+    .banner_img_mobile{
+        display: block;
+        /* margin-top: -5rem; */
+    }
+
+    .banner_img {
+        display: none;
+    }
+}
