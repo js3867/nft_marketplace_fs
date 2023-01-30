@@ -279,12 +279,12 @@ a {
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: none;
-  color: black;
+  color: var(--icons-color);
 }
 
 img {
   height:auto;
-  max-width:100%;;
+  max-width:100%;
 }
 /* // use the !important property to override on new image class. */
 /* .auto-width {

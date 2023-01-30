@@ -23,21 +23,23 @@ const NavBar = () => {
   const openMenu = (e) => {
     const btnText = e.target.innerText
     if (btnText == "Discover") {
-      setDiscover(true)
-      setHelp(false)
-      setNotification(false)
-      setProfile(false)
-      // setOpenSideMenu(false) // why this one not included?
+      if (!discover) {
+        setDiscover(true)
+        setHelp(false)
+        setNotification(false)
+        setProfile(false)
+      } else {
+        setDiscover(false)
+      }
     } else if (btnText == "Help Center") {
-      setDiscover(false)
-      setHelp(true)
-      setNotification(false)
-      setProfile(false)
-    } else {
-      setDiscover(false)
-      setHelp(false)
-      setNotification(false)
-      setProfile(false)
+      if (!help) {
+        setDiscover(false)
+        setHelp(true)
+        setNotification(false)
+        setProfile(false)
+      } else {
+        setHelp(false)
+      }
     }
   }
 

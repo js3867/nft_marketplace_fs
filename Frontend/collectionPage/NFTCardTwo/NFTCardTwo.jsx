@@ -12,7 +12,7 @@ const NFTCardTwo = ({ NFTData }) => {
   const [like, setLike] = useState(false)
   const [likeInc, setLikeInc] = useState(21)
 
-  const likeNFT = () => {
+  const likeNFT = ({ NFTData }) => {
     like
       ? setLike(false) & setLikeInc(likeInc - 1)
       : setLike(true) & setLikeInc(likeInc + 1)
