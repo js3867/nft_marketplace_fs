@@ -94,13 +94,13 @@
     }
     .filter_box_left{
         display: grid;
-        gap: 1rem;
-        justify-items: center;
-        /* grid-template-columns: repeat(3, 1fr); */
+        gap: .5rem;
+        /* justify-items: center; */
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .filter_box_left button{
-        width: 60%;
+        /* width: 60%; */
         padding: .6rem;
     }
 
