@@ -10,8 +10,12 @@
   },
   "dependencies": {
     "@next/font": "13.0.7",
+    "buffer": "^6.0.3",
+    "dotenv": "^16.0.3",
     "framer-motion": "^8.5.4",
+    "ipfs-http-client": "^60.0.0",
     "next": "13.0.7",
+    "node": "^19.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",

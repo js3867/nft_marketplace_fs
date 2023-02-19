@@ -10,7 +10,7 @@ const Button = ({ btnName, handleClick, icon, classStyle }) => {
       <button
         className={`${Style.button} ${classStyle}`}
         // {`${this} ${is} ${how}`} you pass multiple functions to a button
-        onClick={handleClick()}
+        onClick={handleClick}
       >
         {icon}
         {btnName}
