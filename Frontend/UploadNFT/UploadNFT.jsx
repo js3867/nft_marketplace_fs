@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { MdOutlineHttp, MdOutlineAttachFile } from "react-icons/md"
 import { FaPercent } from "react-icons/fa"
 import { AiTwotonePropertySafety } from "react-icons/ai"
 import { TiTick } from "react-icons/ti"
 import Image from "next/image"
+import { useRouter } from "next/router"
 
 //INTERNAL IMPORT
 import Style from "./Upload.module.css"
@@ -12,7 +13,7 @@ import images from "../img"
 import { Button } from "../components/componentsindex.js"
 import { DropZone } from "../UploadNFT/uploadNFTIndex.js"
 
-const UploadNFT = () => {
+const UploadNFT = ({ uploadToIPFS, createNFT }) => {
   // use many states to store the various data
   // which will be used dynamically to create the NFT
   const [price, setPrice] = useState("")
@@ -25,6 +26,8 @@ const UploadNFT = () => {
   const [category, setCategory] = useState(0)
   const [properties, setProperties] = useState("")
   const [image, setImage] = useState(null)
+
+  const router = useRouter()
 
   const categoryArray = [
     {
@@ -53,6 +56,21 @@ const UploadNFT = () => {
     },
   ]
 
+  const createNFT_ = async () => {
+    createNFT(
+      name,
+      price,
+      image,
+      description,
+      website,
+      router
+      // royalties,
+      // fileSize,
+      // category,
+      // properties
+    )
+  }
+
   return (
     <div className={Style.upload}>
       <DropZone
@@ -67,9 +85,8 @@ const UploadNFT = () => {
         fileSize={fileSize}
         category={category}
         properties={properties}
-        // setImage={images.upload}
         setImage={setImage}
-        // uploadToIPFS={uploadToIPFS}
+        uploadToIPFS={uploadToIPFS}
       />
 
       <div className={Style.upload_box}>
@@ -215,21 +232,9 @@ const UploadNFT = () => {
         <div className={Style.upload_box_btn}>
           <Button
             btnName="Upload"
-            handleClick={
-              async () => {}
-              // createNFT(
-              //   name,
-              //   price,
-              //   image,
-              //   description,
-              //   router
-              //   // website,
-              //   // royalties,
-              //   // fileSize,
-              //   // category,
-              //   // properties
-              // )
-            }
+            handleClick={() => {
+              createNFT_()
+            }}
             classStyle={Style.upload_box_btn_style}
           />
           <Button

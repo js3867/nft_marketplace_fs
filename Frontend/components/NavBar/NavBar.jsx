@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 // React-icons https://react-icons.github.io/react-icons/
 import { MdNotifications } from "react-icons/md"
@@ -11,6 +12,9 @@ import Style from "./NavBar.module.css"
 import { Discover, HelpCenter, Notification, Profile, SideBar } from "./index"
 import { Button } from "../componentsindex"
 import images from "../../img/index" // note how images includes ALL exports
+
+//--IMPORT FROM SMART CONTRACT
+import { NFTMarketplaceContext } from "../../Context/NFTMarketplaceContext"
 
 const NavBar = () => {
   //-----USESTATE COMPONENTS
@@ -76,15 +80,19 @@ const NavBar = () => {
     }
   }
 
+  // SMART CONTRACT SECTION
+  const { currentAccount, connectWallet } = useContext(NFTMarketplaceContext)
+  //^^state variables we want to recieve from the context export
+
   return (
-    // "if you want to convert this series into another project, taking this approach (below) will make it very easy to do"
     <div className={Style.navbar}>
       <div className={Style.navbar_container}>
+        {/* LEFT SECTION */}
         <div className={Style.navbar_container_left}>
           <div className={Style.logo}>
             <Image
               src={images.logo}
-              alt="NFT MARKET PLACE"
+              alt="NFT MARKETPLACE"
               width={100}
               height={100}
             />
@@ -97,8 +105,7 @@ const NavBar = () => {
           </div>
         </div>
 
-        {/* END OF LEFT SECTION */}
-        {/* START OF RIGHT SECTION */}
+        {/* RIGHT SECTION */}
         <div className={Style.navbar_container_right}>
           <div className={Style.navbar_container_right_discover}>
             {/* DISCOVER MENU */}
@@ -129,10 +136,15 @@ const NavBar = () => {
             {notification && <Notification />}
           </div>
 
-          {/* CREATE BUTTON SECTION */}
+          {/* CREATE BUTTON */}
           <div className={Style.navbar_container_right_button}>
-            {/* because every button will be different, we need to add unqiue props for each blueprint component*/}
-            <Button btnName="Create" handleClick={() => {}} />
+            {currentAccount == "" ? (
+              <Button btnName="Connect" handleClick={() => connectWallet()} />
+            ) : (
+              <a href="/uploadNFT">
+                <Button btnName="Create" handleClick={() => {}} />
+              </a>
+            )}
           </div>
 
           {/* USER PROFILE */}
