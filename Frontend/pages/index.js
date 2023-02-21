@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useState, useEffect, useContext } from "react"
 
 // INTERNAL IMPORT
 import Style from "../styles/index.module.css"
@@ -21,11 +21,27 @@ import {
 
 //--IMPORT CONTRACT DATA
 import { NFTMarketplaceContext } from "../Context/NFTMarketplaceContext"
+import { type } from "os"
 
 const Home = () => {
-  const { checkIfWalletConnected } = useContext(NFTMarketplaceContext)
+  const { checkIfWalletConnected, currentAccount } = useContext(
+    NFTMarketplaceContext
+  )
   useEffect(() => {
     checkIfWalletConnected()
+  }, [])
+
+  const { fetchNFTs } = useContext(NFTMarketplaceContext)
+  const [nfts, setNfts] = useState([])
+  const [nftsCopy, setNftsCopy] = useState([])
+
+  useEffect(() => {
+    if (currentAccount) {
+      fetchNFTs().then((item) => {
+        setNfts(item.reverse())
+        setNftsCopy(item)
+      })
+    }
   }, [])
 
   return (

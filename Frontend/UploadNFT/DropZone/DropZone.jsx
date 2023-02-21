@@ -21,13 +21,23 @@ const DropZone = ({
   setImage,
 }) => {
   const [fileUrl, setFileUrl] = useState(null)
+  // const [uploadPath, setUploadPath] = useState(null)
 
   const onDrop = useCallback(async (acceptedFile) => {
-    const url = await acceptedFile[0]
+    const url = await uploadToIPFS(acceptedFile[0])
+    console.log(url)
     setFileUrl(url)
     setImage(url)
-    console.log(url)
-  })
+
+    // fix to display the preview of the image
+    // const reader = new FileReader()
+    // reader.onload = () => {
+    //   const uploadedImgUrl = reader.result
+    //   setUploadPath(uploadedImgUrl)
+    // }
+
+    // reader.readAsDataURL(url)
+  }, [])
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -56,16 +66,11 @@ const DropZone = ({
 
       {/* once we have uploaded/dropped an iamge, display the preview */}
       {fileUrl && (
+        // {uploadPath && (
         <aside className={Style.DropZone_box_aside}>
           <div className={Style.DropZone_box_aside_box}>
-            <Image
-              src={images.nft_image_1}
-              alt="nft image"
-              width={200}
-              height={200}
-            />
-            {/* ^^^above, using dynamic input: */}
-            {/* <Image src={fileUrl} alt="nft image" width={200} height={200} /> */}
+            {/* <Image src={uploadPath} alt="nft image" width={200} height={200} /> */}
+            <Image src={fileUrl} alt="nft image" width={200} height={200} />
 
             <div className={Style.DropZone_box_aside_box_preview}>
               <div className={Style.DropZone_box_aside_box_preview_one}>

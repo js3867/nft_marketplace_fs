@@ -81,9 +81,9 @@ export const NFTMarketplaceProvider = ({ children }) => {
     }
   }
 
-  // useEffect(() => {
-  //   checkIfWalletConnected()
-  // }, [])
+  useEffect(() => {
+    checkIfWalletConnected()
+  }, [])
 
   //--click and connect wallet function
   const connectWallet = async () => {
@@ -106,7 +106,6 @@ export const NFTMarketplaceProvider = ({ children }) => {
     try {
       const added = await client.add({ content: file })
       const url = `${subdomain}/ipfs/${added.path}`
-      // const url = `https://ipfs.io/ipfs/${added.path}`
       return url
     } catch (error) {
       console.log("Something went wrong while uploading to IPFS")
@@ -123,9 +122,8 @@ export const NFTMarketplaceProvider = ({ children }) => {
 
     // ---Add data to IPFS
     try {
-      const added = await client.add(data)
-      const url = `${subdomain}/ipfs/${added.path}`
-      //const url = `https://ipfs.io/ipfs/${added.path}`;
+      const added = await client.add(data) // add data to IPFS and get the hash
+      const url = `${subdomain}/ipfs/${added.path}` // create URL to access the data
       console.log("Meta Data URL", url)
       await createSale(url, price)
     } catch (error) {
@@ -165,6 +163,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   //--Fetch NFTs function
   const fetchNFTs = async () => {
     try {
+      // if (currentAccount) {
       const provider = new ethers.providers.JsonRpcProvider()
       //^^provider/signer address to connect to the smart contract
       const contract = fetchContract(provider)
@@ -174,8 +173,9 @@ export const NFTMarketplaceProvider = ({ children }) => {
         data.map(
           async ({ tokenId, seller, owner, price: unformattedPrice }) => {
             const tokenUri = await contract.tokenURI(tokenId) // from ERC721
-
-            const { image, name, description } = await axios.get(tokenUri) // axios.get(..) = fetch JSON data from its url
+            const {
+              data: { image, name, description },
+            } = await axios.get(tokenUri) // axios.get(..) = fetch JSON data from its url
             const price = ethers.utils.formatUnits(unformattedPrice, "ether")
 
             // returns all data, including those former used to axios.get() the latter
@@ -193,44 +193,53 @@ export const NFTMarketplaceProvider = ({ children }) => {
         )
       )
       return items // returns array of arrays
+      // }
     } catch (error) {
       console.log("Something went wrong while fetching NFTs")
+      console.log(error)
     }
   }
+
+  // useEffect runs every time the page is loaded >> catches latest NFTs
+  useEffect(() => {
+    fetchNFTs()
+  }, [])
 
   //--Fetch My NFTs or Listed NFTs function
   const fetchMyNFTs = async (type) => {
     try {
-      const contract = await connectToSmartContract()
+      if (currentAccount) {
+        const contract = await connectToSmartContract()
 
-      const data =
-        type == "fetchItemsListed"
-          ? await contract.fetchItemsListed()
-          : await contract.fetchMyNFTs()
+        const data =
+          type == "fetchItemsListed"
+            ? await contract.fetchItemsListed()
+            : await contract.fetchMyNFTs()
 
-      const items = await Promise.all(
-        data.map(
-          async ({ tokenId, seller, owner, price: unformattedPrice }) => {
-            const tokenUri = await contract.tokenURI(tokenId) // from ERC721
-            const {
-              data: { image, name, description },
-            } = await axios.get(tokenUri)
-            const price = ethers.utils.formatUnits(unformattedPrice, "ether")
+        const items = await Promise.all(
+          data.map(
+            async ({ tokenId, seller, owner, price: unformattedPrice }) => {
+              const tokenUri = await contract.tokenURI(tokenId) // from ERC721
+              const {
+                data: { image, name, description },
+              } = await axios.get(tokenUri)
+              const price = ethers.utils.formatUnits(unformattedPrice, "ether")
 
-            return {
-              price,
-              tokenId: tokenId.toNumber(),
-              seller,
-              owner,
-              image,
-              name,
-              description,
-              tokenUri,
+              return {
+                price,
+                tokenId: tokenId.toNumber(),
+                seller,
+                owner,
+                image,
+                name,
+                description,
+                tokenUri,
+              }
             }
-          }
+          )
         )
-      )
-      return items
+        return items
+      }
     } catch {
       console.log("Something went wrong while fetching listed NFTs")
     }
@@ -247,6 +256,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
       await transaction.wait()
     } catch (error) {
       console.log("Something went wrong while buying NFT")
+      console.log(error)
     }
   }
 

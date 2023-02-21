@@ -13,7 +13,7 @@ import Style from "./NFTDetailsImg.module.css"
 import images from "../../img"
 import { NFTCardTwo } from "../../collectionPage/collectionIndex"
 
-const NFTDetailsImg = () => {
+const NFTDetailsImg = ({ nft }) => {
   const [description, setDescription] = useState(false)
   const [details, setDetails] = useState(true)
   const [like, setLike] = useState(false)
@@ -28,16 +28,16 @@ const NFTDetailsImg = () => {
     like ? setLike(false) : setLike(true)
   }
 
-  const collectablesArray = [
-    images.nft_image_1,
-    images.nft_image_2,
-    images.nft_image_3,
-    images.nft_image_1,
-    images.nft_image_2,
-    images.nft_image_3,
-    images.nft_image_1,
-    images.nft_image_2,
-  ]
+  // const collectablesArray = [
+  //   images.nft_image_1,
+  //   images.nft_image_2,
+  //   images.nft_image_3,
+  //   images.nft_image_1,
+  //   images.nft_image_2,
+  //   images.nft_image_3,
+  //   images.nft_image_1,
+  //   images.nft_image_2,
+  // ]
 
   return (
     <div className={Style.NFTDetailsImg}>
@@ -61,7 +61,8 @@ const NFTDetailsImg = () => {
 
           <div className={Style.NFTDetailsImg_box_NFT_img}>
             <Image
-              src={images.nft_image_1}
+              src={nft.image}
+              // src={images.nft_image_1}
               className={Style.NFTDetailsImg_box_NFT_img_img}
               alt="nft image"
               width={700}
@@ -81,9 +82,10 @@ const NFTDetailsImg = () => {
         {description && (
           <div className={Style.NFTDetailsImg_box_description_box}>
             <p>
-              lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              {nft.description}
+              {/* lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               euismod nunc eu nisl ultricies, nec ultricies nisl aliquet. Nulla
-              facilisi.
+              facilisi. */}
             </p>
           </div>
         )}
@@ -102,12 +104,12 @@ const NFTDetailsImg = () => {
             <p>
               <small>Contract Address</small>
               <br />
-              0x96ys87fds78df6vy7sdf86ds7ycsd7td
+              {nft.seller}
             </p>
             <p>
-              <small>Token ID</small>
+              <small>Token ID: </small>
               <br />
-              134386
+              {nft.tokenId}
             </p>
           </div>
         )}
