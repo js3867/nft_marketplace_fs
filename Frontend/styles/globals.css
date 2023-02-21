@@ -29,17 +29,16 @@ This projects does its own styling, but there are frameworks available for this
   --icons-light-color: #4c577341;
   --icons-bg-color: #e2e6e9;
   --shadow-dark-color: #d3dae7;
-  /* --bg-shadow-dark-color: #d3dae745; */
-  /* --shadow-light-color: #fff; */
-  /* --main-bg-color: #ecf0f3;
+  --bg-shadow-dark-color: #d3dae745;
+  --shadow-light-color: #fff;
+  --main-bg-color: #ecf0f3;
 
   --box-shadow: 1rem 1rem 1rem var(--shadow-dark-color),
   -1rem -1rem 1rem var(--shadow-light-color);
 
   --box-shadow-2: 0rem 0rem 0rem var(--shadow-dark-color),
   -.3rem -.3rem 1rem var(--shadow-dark-color)
-
-} */
+}  */
 
 
 /* //THEME 11 */

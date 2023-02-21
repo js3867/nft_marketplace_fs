@@ -13,7 +13,7 @@ const Category = () => {
       <div className={Style.box_category}>
         <div className={Style.category}>
           {CategoryArray.map((el, i) => (
-            <div className={Style.category_box} key={1 + 1}>
+            <div className={Style.category_box} key={i + 1}>
               <Image
                 src={images.creatorbackground1}
                 className={Style.category_box_img}
