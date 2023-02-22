@@ -19,7 +19,7 @@ import Style from "./AuthorProfileCard.module.css"
 import images from "../../img"
 import { Button } from "../../components/componentsindex"
 
-const AuthorProfileCard = () => {
+const AuthorProfileCard = ({ currentAccount }) => {
   const [share, setShare] = useState(false)
   const [report, setReport] = useState(false)
 
@@ -63,22 +63,23 @@ const AuthorProfileCard = () => {
 
         <div className={Style.AuthorProfileCard_box_info}>
           <h2>
-            Dony Herrera
+            Dony Herrera{""}{" "}
             <span>
               <MdVerified />
-            </span>
+            </span>{" "}
           </h2>
 
           <div className={Style.AuthorProfileCard_box_info_address}>
-            <input type="text" value="0x345345.....45d35t" id="myInput" />
+            <input type="text" value={currentAccount} id="myInput" />
             <FiCopy
               onClick={() => copyAddress()}
               className={Style.AuthorProfileCard_box_info_address_icon}
             />
           </div>
+
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            voluptatum, quod, quia, voluptas quae voluptatem quibusdam
+            Punk #4786 / An OG Cryptopunk Collector, hoarder of NFTs.
+            Contributing to @ether_cards, an NFT Monetization Platform.
           </p>
 
           <div className={Style.AuthorProfileCard_box_info_social}>

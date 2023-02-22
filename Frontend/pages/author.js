@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import Image from "next/image"
 
 // --INTERNAL IMPORT
@@ -12,6 +12,9 @@ import {
   AuthorNFTCardBox,
 } from "../authorPage/authorcomponentindex"
 import images from "../img/"
+
+// --SMART CONTRACT IMPORT
+import { NFTMarketplaceContext } from "../Context/NFTMarketplaceContext"
 
 const author = () => {
   const followerArray = [
@@ -55,11 +58,33 @@ const author = () => {
   const [follower, setFollower] = useState(false)
   const [following, setFollowing] = useState(false)
 
+  //------------------SMART CONTRACT------------------
+  const { fetchMyNFTsOrListedNFTs, currentAccount } = useContext(
+    NFTMarketplaceContext
+  )
+  const [nfts, setNfts] = useState([])
+  const [myNfts, setMyNfts] = useState([])
+
+  useEffect(() => {
+    fetchMyNFTsOrListedNFTs("fetchItemsListed").then((items) => {
+      // we use then() to get the items from the promise
+      setMyNfts(items)
+    })
+  }, [])
+
+  useEffect(() => {
+    fetchMyNFTsOrListedNFTs("fetchMyNFTs").then((items) => {
+      // we use then() to get the items from the promise
+      setNfts(items)
+    })
+  }, [])
+
   return (
     <div className={Style.author}>
       <Banner bannerImage={images.creatorbackground2} />
-      <AuthorProfileCard />
+      <AuthorProfileCard currentAccount={currentAccount} />
       <AuthorTabs
+        currentAccount={currentAccount}
         setCollectables={setCollectables}
         setCreated={setCreated}
         setLike={setLike}
@@ -67,11 +92,14 @@ const author = () => {
         setFollowing={setFollowing}
       />
       <AuthorNFTCardBox
+        currentAccount={currentAccount}
         collectables={collectables}
         created={created}
         like={like}
         follower={follower}
         following={following}
+        nfts={nfts}
+        myNfts={myNfts}
       />
       <Title
         heading={"Popular Creators"}

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react"
 import Image from "next/image"
+import { useRouter } from "next/router"
 import Link from "next/link"
 import {
   MdVerified,
@@ -34,6 +35,8 @@ const NFTDescription = ({ nft }) => {
   const [history, setHistory] = useState(true)
   const [provenance, setProvenance] = useState(false)
   const [owner, setOwner] = useState(false)
+
+  const router = useRouter()
 
   const historyArray = [
     images.user1,
@@ -263,40 +266,34 @@ const NFTDescription = ({ nft }) => {
             <div
               className={Style.NFTDescription_box_profile_bidding_box_button}
             >
-              {console.log("owner", nft.owner)}
-              {console.log("seller", nft.seller)}
-              {console.log("currentAccount", currentAccount)}
-
               {currentAccount == nft.seller.toLowerCase() ? (
-                <p>You are the owner of this NFT</p>
+                <p>You can't buy your own NFT</p>
               ) : currentAccount == nft.owner.toLowerCase() ? (
                 <Button
-                  icon=<FaWallet fill="white" />
+                  icon=<FaWallet />
                   btnName="List on Marketplace"
-                  handleClick={() => buyNFT(nft)}
+                  handleClick={() =>
+                    router.push(
+                      `/reSellToken?id=${nft.tokenId}&tokenURI=${nft.tokenURI}&price=${nft.price}`
+                    )
+                  }
                   classStyle={Style.button}
                 />
               ) : (
-                <div
-                  className={
-                    Style.NFTDescription_box_profile_bidding_box_button
-                  }
-                >
-                  <Button
-                    icon=<FaWallet fill="white" />
-                    btnName="Buy NFT"
-                    handleClick={() => buyNFT(nft)}
-                    classStyle={Style.button}
-                  />
-
-                  <Button
-                    icon=<FaWallet fill="white" />
-                    btnName="Make Offer"
-                    handleClick={() => {}}
-                    classStyle={Style.button}
-                  />
-                </div>
+                <Button
+                  icon=<FaWallet />
+                  btnName="Buy NFT"
+                  handleClick={() => buyNFT(nft)}
+                  classStyle={Style.button}
+                />
               )}
+
+              <Button
+                icon=<FaPercentage />
+                btnName="Make offer"
+                handleClick={() => {}}
+                classStyle={Style.button}
+              />
             </div>
 
             <div className={Style.NFTDescription_box_profile_bidding_box_tabs}>

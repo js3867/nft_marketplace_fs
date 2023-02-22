@@ -126,6 +126,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
       const url = `${subdomain}/ipfs/${added.path}` // create URL to access the data
       console.log("Meta Data URL", url)
       await createSale(url, price)
+      router.push("/search")
     } catch (error) {
       console.log(`Error to upload IPFS${error}`)
       setError(`Error to upload IPFS`)
@@ -152,6 +153,8 @@ export const NFTMarketplaceProvider = ({ children }) => {
           })
 
       await transaction.wait()
+
+      console.log(`Success creating sale`)
       router.push("/search")
     } catch (error) {
       console.log(`Create sale error ${error}`)
@@ -206,7 +209,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   }, [])
 
   //--Fetch My NFTs or Listed NFTs function
-  const fetchMyNFTs = async (type) => {
+  const fetchMyNFTsOrListedNFTs = async (type) => {
     try {
       if (currentAccount) {
         const contract = await connectToSmartContract()
@@ -216,6 +219,9 @@ export const NFTMarketplaceProvider = ({ children }) => {
             ? await contract.fetchItemsListed()
             : await contract.fetchMyNFTs()
 
+        {
+          console.log("Context array: ", data)
+        }
         const items = await Promise.all(
           data.map(
             async ({ tokenId, seller, owner, price: unformattedPrice }) => {
@@ -239,6 +245,8 @@ export const NFTMarketplaceProvider = ({ children }) => {
           )
         )
         return items
+      } else {
+        console.log("no joy")
       }
     } catch {
       console.log("Something went wrong while fetching listed NFTs")
@@ -250,7 +258,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
     try {
       const contract = await connectToSmartContract()
       const price = ethers.utils.parseUnits(nft.price, "ether")
-      const transaction = await contract.createSale(nft.tokenUri, price, {
+      const transaction = await contract.createMarketSale(nft.tokenId, {
         value: price,
       })
       await transaction.wait()
@@ -268,10 +276,14 @@ export const NFTMarketplaceProvider = ({ children }) => {
         uploadToIPFS,
         createNFT,
         fetchNFTs,
-        fetchMyNFTs,
+        fetchMyNFTsOrListedNFTs,
         buyNFT,
+        createSale,
         currentAccount,
         titleData,
+        setOpenError,
+        openError,
+        error,
       }}
     >
       {children}
