@@ -23,6 +23,9 @@ const NavBar = () => {
   const [notification, setNotification] = useState(false)
   const [profile, setProfile] = useState(false)
   const [openSideMenu, setOpenSideMenu] = useState(false)
+  const [network, setNetwork] = useState(false)
+  const [blockchainNetwork, SetBlockchainNetwork] = useState("")
+  const [ThemeColor, setThemeColor] = useState(false)
 
   const openMenu = (e) => {
     const btnText = e.target.innerText
@@ -81,8 +84,56 @@ const NavBar = () => {
   }
 
   // SMART CONTRACT SECTION
-  const { currentAccount, connectWallet } = useContext(NFTMarketplaceContext)
-  //^^state variables we want to recieve from the context export
+  const { currentAccount, connectWallet, blockchain, setTheme, openError } =
+    useContext(NFTMarketplaceContext)
+
+  const address = `0${currentAccount.slice(1, 7)}...${currentAccount.slice(
+    38,
+    42
+  )}`
+
+  const backHome = () => {
+    router.push("/")
+  }
+
+  const changeNetwork = () => {
+    if (!network) {
+      setNetwork(true)
+    } else {
+      setNetwork(false)
+    }
+  }
+
+  const getNetwork = () => {
+    if (blockchain == "5") {
+      SetBlockchainNetwork("ETHGoerli")
+    }
+    if (blockchain == "1") {
+      SetBlockchainNetwork("Ethereum")
+    }
+    if (blockchain == "137") {
+      SetBlockchainNetwork("Polygon")
+    }
+    if (blockchain == "80001") {
+      SetBlockchainNetwork("Polygon-Mumbai")
+    }
+  }
+
+  const themeColor = () => {
+    if (!ThemeColor) {
+      setThemeColor(true)
+    } else {
+      setThemeColor(false)
+    }
+  }
+
+  const myTheme = () => {
+    setTheme("dark-theme")
+  }
+
+  useEffect(() => {
+    getNetwork()
+  })
 
   return (
     <div className={Style.navbar}>
@@ -136,17 +187,6 @@ const NavBar = () => {
             {notification && <Notification />}
           </div>
 
-          {/* CREATE BUTTON */}
-          <div className={Style.navbar_container_right_button}>
-            {currentAccount == "" ? (
-              <Button btnName="Connect" handleClick={() => connectWallet()} />
-            ) : (
-              <a href="/uploadNFT">
-                <Button btnName="Create" handleClick={() => {}} />
-              </a>
-            )}
-          </div>
-
           {/* USER PROFILE */}
 
           <div className={Style.navbar_container_right_profile_box}>
@@ -163,6 +203,29 @@ const NavBar = () => {
               {/* "if profile, we have to render the profile component" */}
               {profile && <Profile />}
             </div>
+          </div>
+          <div
+            className={Style.navbar_container_right_address}
+            onClick={() => {
+              changeNetwork()
+            }}
+          >
+            {currentAccount == "" ? (
+              ""
+            ) : (
+              <p>{network == true ? blockchainNetwork : address}</p>
+            )}
+          </div>
+
+          {/* CREATE BUTTON */}
+          <div className={Style.navbar_container_right_button}>
+            {currentAccount == "" ? (
+              <Button btnName="Connect" handleClick={() => connectWallet()} />
+            ) : (
+              <a href="/uploadNFT">
+                <Button btnName="Create" handleClick={() => {}} />
+              </a>
+            )}
           </div>
 
           {/* MENU BUTTON -- mobile */}

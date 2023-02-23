@@ -62,22 +62,20 @@ const author = () => {
   const { fetchMyNFTsOrListedNFTs, currentAccount } = useContext(
     NFTMarketplaceContext
   )
-  const [nfts, setNfts] = useState([])
-  const [myNfts, setMyNfts] = useState([])
+  const [NFTs, setNFTs] = useState([])
+  const [myNFTs, setMyNFTs] = useState([])
 
   useEffect(() => {
     fetchMyNFTsOrListedNFTs("fetchItemsListed").then((items) => {
-      // we use then() to get the items from the promise
-      setMyNfts(items)
+      setNFTs(items)
     })
-  }, [])
+  }, [NFTs])
 
   useEffect(() => {
     fetchMyNFTsOrListedNFTs("fetchMyNFTs").then((items) => {
-      // we use then() to get the items from the promise
-      setNfts(items)
+      setMyNFTs(items)
     })
-  }, [])
+  }, [myNFTs])
 
   return (
     <div className={Style.author}>
@@ -98,8 +96,8 @@ const author = () => {
         like={like}
         follower={follower}
         following={following}
-        nfts={nfts}
-        myNfts={myNfts}
+        nfts={NFTs}
+        myNfts={myNFTs}
       />
       <Title
         heading={"Popular Creators"}

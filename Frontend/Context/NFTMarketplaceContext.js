@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import Web3Modal from "../../Smart_Contracts/node_modules/Web3Modal"
 import { ethers } from "../../Smart_Contracts/node_modules/ethers"
-import Router from "next/router"
 import { useRouter } from "next/router"
 import axios from "../../Smart_Contracts/node_modules/axios"
 import { create } from "ipfs-http-client"
@@ -9,6 +8,7 @@ import { create } from "ipfs-http-client"
 // INTERNAL IMPORTS
 import { NFTMarketplaceAddress, NFTMarketplaceABI } from "./constants"
 
+// const MUMBAI_RPC_URL = process.env.NEXT_ALCHEMY_MUMBAI_RPC_KEY
 const PROJECTID = process.env.NEXT_PUBLIC_PROJECTID
 const PROJECTSECRETEKEY = process.env.NEXT_PUBLIC_PROJECTSECRETEKEY
 const SUBDOMAIN = process.env.NEXT_PUBLIC_SUBDOMAIN
@@ -22,7 +22,6 @@ const subdomain = SUBDOMAIN
 
 const client = create({
   host: "ipfs.infura.io",
-  //host: "ipfs.io",
   port: 5001,
   protocol: "https",
   headers: {
@@ -61,29 +60,35 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const [error, setError] = useState("")
   const [openError, setOpenError] = useState(false)
   const [currentAccount, setCurrentAccount] = useState("")
+  const [blockchain, setBlockchain] = useState(0)
   const router = useRouter()
 
   //--check if wallet is connected
   const checkIfWalletConnected = async () => {
     try {
-      if (!window.ethereum) return console.log("Install MetaMask!")
-
-      const accounts = await window.ethereum.request({ method: "eth_accounts" }) // array of accounts provided by metamask
+      if (!window.ethereum)
+        return setOpenError(true), setError("Install MetaMask")
+      //----CHECK IF THERE IS ANY ACCOUNT
+      const accounts = await window.ethereum.request({
+        method: "eth_accounts",
+      })
       if (accounts.length) {
         setCurrentAccount(accounts[0])
+        setBlockchain(window.ethereum.networkVersion)
       } else {
-        console.log("No account found")
+        setError("No Account Found")
+        setOpenError(true)
       }
-
-      console.log("Connected with: ", accounts[0])
     } catch (error) {
-      console.log("Something went wrong while checking connecting to wallet")
+      console.log(`error is ${error}`)
+      setError(`Error While Connecting Wallet`)
+      setOpenError(true)
     }
   }
 
-  useEffect(() => {
-    checkIfWalletConnected()
-  }, [])
+  // useEffect(() => {
+  //   checkIfWalletConnected()
+  // }, [])
 
   //--click and connect wallet function
   const connectWallet = async () => {
@@ -126,7 +131,6 @@ export const NFTMarketplaceProvider = ({ children }) => {
       const url = `${subdomain}/ipfs/${added.path}` // create URL to access the data
       console.log("Meta Data URL", url)
       await createSale(url, price)
-      router.push("/search")
     } catch (error) {
       console.log(`Error to upload IPFS${error}`)
       setError(`Error to upload IPFS`)
@@ -153,7 +157,6 @@ export const NFTMarketplaceProvider = ({ children }) => {
           })
 
       await transaction.wait()
-
       console.log(`Success creating sale`)
       router.push("/search")
     } catch (error) {
@@ -168,10 +171,10 @@ export const NFTMarketplaceProvider = ({ children }) => {
     try {
       // if (currentAccount) {
       const provider = new ethers.providers.JsonRpcProvider()
+      // const provider = new ethers.providers.JsonRpcProvider(MUMBAI_RPC_URL)
       //^^provider/signer address to connect to the smart contract
       const contract = fetchContract(provider)
       const data = await contract.fetchMarketItems()
-
       const items = await Promise.all(
         data.map(
           async ({ tokenId, seller, owner, price: unformattedPrice }) => {
@@ -211,6 +214,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   //--Fetch My NFTs or Listed NFTs function
   const fetchMyNFTsOrListedNFTs = async (type) => {
     try {
+      console.log("currentAccount:", currentAccount)
       if (currentAccount) {
         const contract = await connectToSmartContract()
 
@@ -219,9 +223,6 @@ export const NFTMarketplaceProvider = ({ children }) => {
             ? await contract.fetchItemsListed()
             : await contract.fetchMyNFTs()
 
-        {
-          console.log("Context array: ", data)
-        }
         const items = await Promise.all(
           data.map(
             async ({ tokenId, seller, owner, price: unformattedPrice }) => {
@@ -250,6 +251,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
       }
     } catch {
       console.log("Something went wrong while fetching listed NFTs")
+      console.log(error)
     }
   }
 
@@ -280,6 +282,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
         buyNFT,
         createSale,
         currentAccount,
+        blockchain,
         titleData,
         setOpenError,
         openError,

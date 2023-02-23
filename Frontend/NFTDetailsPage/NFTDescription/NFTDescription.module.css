@@ -78,6 +78,7 @@
     align-self: center;
     gap: 1rem;
     line-height: 1;
+    background-color: orange;
 }
 
 .NFTDescription_box_profile_box_right_info small,

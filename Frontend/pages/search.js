@@ -4,7 +4,6 @@ import React, { useState, useEffect, useContext } from "react"
 import Style from "../styles/search.module.css"
 import { Slider, Brand, Filter } from "../components/componentsindex"
 import { SearchBar } from "../searchPage/searchBarindex"
-// import Filter from "../components/Filter/Filter" << don't want to indi. import this time
 import { Banner, NFTCardTwo } from "../collectionPage/collectionIndex"
 import images from "../img"
 

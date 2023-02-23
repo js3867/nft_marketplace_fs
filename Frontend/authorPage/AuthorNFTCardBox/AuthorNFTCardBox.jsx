@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 
 //--INTERNAL IMPORTS
 import Style from "./AuthorNFTCardBox.module.css"
@@ -6,8 +6,10 @@ import images from "../../img/"
 import { NFTCardTwo } from "../../collectionPage/collectionIndex"
 import FollowerTabCard from "../../components/FollowerTab/FollowerTabCard/FollowerTabCard"
 
+//--SMART CONTRACT IMPORTS
+import { NFTMarketplaceContext } from "../../Context/NFTMarketplaceContext"
+
 const AuthorNFTCardBox = ({
-  currentAccount,
   collectables,
   created,
   like,
@@ -16,36 +18,15 @@ const AuthorNFTCardBox = ({
   nfts,
   myNfts,
 }) => {
-  // const collectablesArray = [
-  //   images.nft_image_1,
-  //   images.nft_image_2,
-  //   images.nft_image_3,
-  //   images.nft_image_1,
-  //   images.nft_image_2,
-  //   images.nft_image_3,
-  //   images.nft_image_1,
-  //   images.nft_image_2,
-  // ]
-  //
-  // const createdArray = [
-  //   images.nft_image_1,
-  //   images.nft_image_3,
-  //   images.nft_image_2,
-  //   images.nft_image_1,
-  //   images.nft_image_3,
-  //   images.nft_image_2,
-  // ]
+  const { currentAccount, checkIfWalletConnected } = useContext(
+    NFTMarketplaceContext
+  )
 
   const likeArray = [
     images.nft_image_3,
     images.nft_image_1,
     images.nft_image_2,
     images.nft_image_1,
-    images.nft_image_3,
-    images.nft_image_1,
-    images.nft_image_2,
-    images.nft_image_2,
-    images.nft_image_3,
   ]
 
   const followerArray = [

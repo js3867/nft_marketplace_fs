@@ -30,7 +30,7 @@ const NFTDetails = () => {
 
   return (
     <div>
-      <NFTDetailsPage nft={nft} />
+      <NFTDetailsPage nft={nft} currentAccount={currentAccount} />
       <Category />
       <Brand />
     </div>

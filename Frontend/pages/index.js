@@ -21,7 +21,6 @@ import {
 
 //--IMPORT CONTRACT DATA
 import { NFTMarketplaceContext } from "../Context/NFTMarketplaceContext"
-import { type } from "os"
 
 const Home = () => {
   const { checkIfWalletConnected, currentAccount } = useContext(
